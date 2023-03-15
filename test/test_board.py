@@ -16,3 +16,15 @@ class TestBoard(unittest.TestCase):
         self.assertEqual(board._starts['A'], (2,1))
         self.assertEqual(board._targets['A'], (2,3))
         self.assertEqual(board.get_start(), (('A', (2,1)),))
+    
+    def test_win(self):
+        board_str = '#####\n#...#\n#A.a#\n#####'.split('\n')
+        board = Board(board_str)
+        self.assertTrue(board.is_win((('A', (2,3)),)))
+        self.assertFalse(board.is_win((('B', (2,3)),)))
+        self.assertFalse(board.is_win((('A', (3,1)),)))
+        
+        board_str = '#####\n#...#\n#A.a#\n#B.b#\n#####'.split('\n')
+        board = Board(board_str)
+        self.assertFalse(board.is_win((('A', (2,3)),)))
+        self.assertTrue(board.is_win((('A', (2,3)), ('B', (3,3)))))

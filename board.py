@@ -27,3 +27,6 @@ class Board:
     
     def get_start(self):
         return tuple(self._starts.items())
+    
+    def is_win(self, state):
+        return self._targets == dict(state)
