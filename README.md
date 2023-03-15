@@ -26,3 +26,5 @@ For example:
 To run the tests, simply use:
 
 > python3 -m unittest discover -v test
+
+The `levels` directory contains a few levels for testing.
