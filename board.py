@@ -79,4 +79,4 @@ class Board:
                 neighbor = state.copy()
                 neighbor[stone] = (r, c+right)
                 neighbors.append((tuple(neighbor.items()), stone + ' RIGHT'))
-            return neighbors
+        return neighbors

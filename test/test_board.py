@@ -37,7 +37,7 @@ class TestBoard(unittest.TestCase):
     
     def test_neighbors(self):
         # Check both with walls and without outer walls.
-        board_str = '#####\n.....\nA....\n.....\n#####'.split('\n')
+        board_str = '#####\n.....\n.....\n.....\n#####'.split('\n')
         starts = {'A': (2,0)}
         targets = {'A': (2,4)}
         board = Board(board_str, starts, targets)
@@ -45,4 +45,25 @@ class TestBoard(unittest.TestCase):
         self.assertIn(((('A', (1,0)),), 'A UP'), neighbors)
         self.assertIn(((('A', (3,0)),), 'A DOWN'), neighbors)
         self.assertIn(((('A', (2,4)),), 'A RIGHT'), neighbors)
+        self.assertEqual(len(neighbors), 3)
+
+        # Check middle walls.
+        board_str = '#####\n.....\n..#..\n.....\n#####'.split('\n')
+        starts = {'A': (2,0)}
+        targets = {'A': (2,4)}
+        board = Board(board_str, starts, targets)
+        neighbors = board.get_neighbors(board.get_start())
+        self.assertIn(((('A', (2,1)),), 'A RIGHT'), neighbors)
+
+        # Multiple stones.
+        board_str = '#####\n.....\n.....\n.....\n#####'.split('\n')
+        starts = {'A': (2,0), 'B': (3,0)}
+        targets = {'A': (2,4), 'B': (3,4)}
+        board = Board(board_str, starts, targets)
+        neighbors = board.get_neighbors(board.get_start())
+        self.assertIn(((('A', (1,0)), ('B', (3,0))), 'A UP'), neighbors)
+        self.assertIn(((('A', (2,4)), ('B', (3,0))), 'A RIGHT'), neighbors)
+        self.assertIn(((('A', (2,0)), ('B', (3,4))), 'B RIGHT'), neighbors)
+        self.assertNotIn(((('A', (3,0)), ('B', (3,0))), 'A DOWN'), neighbors)
+        self.assertNotIn(((('A', (2,0)), ('B', (1,0))), 'B UP'), neighbors)
         self.assertEqual(len(neighbors), 3)
