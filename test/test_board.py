@@ -23,8 +23,18 @@ class TestBoard(unittest.TestCase):
         self.assertTrue(board.is_win((('A', (2,3)),)))
         self.assertFalse(board.is_win((('B', (2,3)),)))
         self.assertFalse(board.is_win((('A', (3,1)),)))
-        
+
         board_str = '#####\n#...#\n#A.a#\n#B.b#\n#####'.split('\n')
         board = Board(board_str)
         self.assertFalse(board.is_win((('A', (2,3)),)))
         self.assertTrue(board.is_win((('A', (2,3)), ('B', (3,3)))))
+    
+    def test_neighbors(self):
+        # Check both with walls and without outer walls.
+        board_str = '#####\n.....\nA....\n.....\n#####'.split('\n')
+        board = Board(board_str)
+        neighbors = board.get_neighbors(board.get_start())
+        self.assertIn(((('A', (1,0)),), 'A UP'), neighbors)
+        self.assertIn(((('A', (3,0)),), 'A DOWN'), neighbors)
+        self.assertIn(((('A', (2,4)),), 'A RIGHT'), neighbors)
+        self.assertEqual(len(neighbors), 3)
