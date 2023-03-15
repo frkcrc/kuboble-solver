@@ -1,4 +1,10 @@
 class Board:
+    """Simple board representation.
+       
+    Internally it stores stone states as dictionaries.
+    However, dict isn't hashable, so it outputs states as a tuple
+    instead in the format ((stone, (r,c)), ...).
+    """
 
     def __init__(self, board_str):
         n, m = len(board_str), len(board_str[0])
@@ -19,3 +25,5 @@ class Board:
                 if ch.isupper():
                     self._starts[ch] = (r,c)
     
+    def get_start(self):
+        return tuple(self._starts.items())

@@ -15,3 +15,4 @@ class TestBoard(unittest.TestCase):
         self.assertIn('A', board._targets)
         self.assertEqual(board._starts['A'], (2,1))
         self.assertEqual(board._targets['A'], (2,3))
+        self.assertEqual(board.get_start(), (('A', (2,1)),))
