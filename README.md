@@ -22,3 +22,7 @@ For example:
 > #...#  
 > #wb.#  
 > #####  
+
+To run the tests, simply use:
+
+> python3 -m unittest discover -v test
