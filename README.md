@@ -4,7 +4,7 @@ Solver for [Kuboble](https://kuboble.com/) puzzles.
 
 Run the solver with:
 
-> python3 solver.py \<file>
+```python3 solver.py <file>```
 
 `<file>` should be a file containing a level.
 
@@ -16,14 +16,15 @@ The file should contain, in order:
 
 For example:
 
-> `5`  
-> `B,1,1,3,2`  
-> `W,1,2,3,1`  
-> `#####`   
-> `#...#`  
-> `#...#`  
-> `#...#`  
-> `#####`  
+```5 
+B,1,1,3,2
+W,1,2,3,1
+#####
+#...#
+#...#
+#...#
+#####
+```
 
 - This could be expressed without outer walls (but the coordinates should be adjusted to account for the missing row/col).
 
@@ -31,6 +32,6 @@ For example:
 
 To run the tests, simply use:
 
-> python3 -m unittest discover -v test
+```python3 -m unittest discover -v test```
 
 The `levels` directory contains a few levels for testing.
