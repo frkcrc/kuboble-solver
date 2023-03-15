@@ -13,4 +13,4 @@ def read(kuboble_str):
         starts[name] = (int(si), int(sj))
         targets[name] = (int(ti), int(tj))
         lines = lines[1:]
-    return Board(lines, starts, targets)
+    return (moves, Board(lines, starts, targets))

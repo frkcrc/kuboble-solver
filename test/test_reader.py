@@ -6,7 +6,8 @@ class TestReader(unittest.TestCase):
 
     def test_read(self):
         kuboble_str = '1\nA,2,1,2,3\n#####\n#...#\n#...#\n#####'
-        board = read(kuboble_str)
+        moves, board = read(kuboble_str)
+        self.assertEqual(moves, 1)
         self.assertEqual(board._board, 
           [[1,1,1,1,1], [1,0,0,0,1], [1,0,0,0,1], [1,1,1,1,1]]
         )

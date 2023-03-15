@@ -6,4 +6,4 @@ if __name__ == '__main__':
         print('Usage: python3 solver.py <file>')
         exit()
     contents = open(sys.argv[1]).read()
-    board = read(contents)
+    maxMoves, board = read(contents)
